@@ -10,14 +10,14 @@ const mapStateToProps = (state) => {
         quizID: state.quizID,
         quizQuestionsAndAnswers: state.quizQuestionsAndAnswers,
         resultRender: state.resultRender,
-        quizResult: state.quizResult
+        quizResults: state.quizResults
     } 
 }
 
 /* grab creators */
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitAnswers: (result) => { dispatch({type: "SUBMIT", quizResult: result}) }
+        submitAnswers: (result) => { dispatch({type: "SUBMIT", quizResults: result}) }
     } 
 }  
 

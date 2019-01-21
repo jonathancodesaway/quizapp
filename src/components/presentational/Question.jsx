@@ -6,10 +6,8 @@ class Question extends Component {
   constructor(props) {
     super(props);
 
-    //necessary???
     this.state = {
-      answers: [["yes" , 1] , ["no" , 0] ],
-      //this.props.answers
+
     }
   }
   
@@ -17,19 +15,17 @@ class Question extends Component {
     return (
       <div className="question">
         {this.props.question} 
-        {this.state.answers.map(
-          function(answer) {
+        {this.props.answers.map( function(answer) {
             return (
               <div className="answer">
                 {answer[0]}
-                <input type="radio"></input>
+                <input type="radio" name="selection"></input>
               </div>
             );
-          }
-        )};
+        })};
       </div>
     );
-    }
   }
+}
   
   export default Question;

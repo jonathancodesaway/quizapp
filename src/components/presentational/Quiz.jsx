@@ -4,11 +4,14 @@ import './Quiz.css';
 
 class Quiz extends Component {
     
+  //Quiz component calculates userResult and upon submit
+  //finds final answer in quizResults array and shows
+  //user their result
   constructor() {
     super();
 
     this.state = {
-
+      //quizQuestionsAndAnswers: [ ["question1", [["yes",0], ["no", 1]] ] ]
     }
   }
 
@@ -16,17 +19,13 @@ class Quiz extends Component {
     return (
       <div className="quiz">
         <h1>{this.props.quizTitle}</h1>
-        <Question />
-        {this.props.quizQuestionsAndAnswers.map( 
-          function(question, answers) { 
-            return <Question question={question} answers={answers}/> 
-          }
-        )};
-
+        {this.props.quizQuestionsAndAnswers.map( function(qAndA) { 
+            return <Question question={qAndA[0]} answers={qAndA[1]}/> 
+        })};
         {this.props.resultRender ? <div className="result">{this.props.quizResult}</div> : null }
       </div>
     );
-    }
   }
+}
   
   export default Quiz;
