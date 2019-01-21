@@ -1,0 +1,10 @@
+.quiz {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+}
+.result {
+    background-color: blueviolet;
+    margin: 90px;
+    padding: 90px;
+}

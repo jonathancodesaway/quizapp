@@ -1,0 +1,10 @@
+.question {
+    background-color: blueviolet;
+    margin: 90px;
+    padding: 90px;
+}
+.answer {
+    display: flex;
+    flex-direction: row;
+    color: black;
+}
