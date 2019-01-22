@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API calls possible. 
 
-Things you may want to cover:
+replace <num> with a number. like 3. not <3>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+localhost:3000/quizques?id=<num>
+localhost:3000/quizans?id=<num>
+localhost:3000/quizlist
