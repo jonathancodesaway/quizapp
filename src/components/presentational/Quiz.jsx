@@ -13,11 +13,6 @@ class Quiz extends Component {
 
     this.state = {
       userResult: 0,
-      quizQuestionsAndAnswers: [ 
-        ["question1", [["yes",1], ["no", 2], ["maybe", 3]] ], 
-        ["question2", [["yes",1], ["no", 2], ["maybe", 3]] ], 
-        ["question3", [["yes",1], ["no", 2], ["maybe", 3]] ] 
-      ]
     }
   }
 
@@ -33,16 +28,17 @@ class Quiz extends Component {
   render() {
     return (
       <div>
-        <QuizButtons quizTitlesAndIds={this.props.quizTitlesAndIds}/>
+        <QuizButtons quizTitlesAndIds={this.props.quizTitlesAndIds} quizThunk={this.props.quizThunk}/>
         <div className="quiz">
           <h1>{this.props.quizTitle}</h1>
           <form onSubmit={(e) => {this.handleSubmit(e)}}>
           BEGIN FORM
-          {this.state.quizQuestionsAndAnswers.map( (qAndA) => { 
+          {this.props.quizQuestionsAndAnswers.map( (qAndA) => { 
               return (
                 <Question 
-                  question={qAndA[0]} 
-                  answers={qAndA[1]} 
+                  question={qAndA.question} 
+                  answers={Object.keys(qAndA.answers)} 
+                  weights={Object.values(qAndA.answers)}
                   updateUserResult={this.updateUserResult}
                 /> 
               )
