@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: quizapp
+  host: localhost
+  pool: 5
+  username: quizapp
+  password: test
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: quizapp
+  host: localhost
+  pool: 5
+  username: quizapp
+  password: test
+
