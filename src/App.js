@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { VisibleQuiz } from './components';
-import { Footer } from './components';
+import { VisibleQuiz, Footer } from './components';
 
 class App extends Component {
   render() {

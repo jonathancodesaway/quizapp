@@ -2,15 +2,19 @@
 export const SUBMIT = "SUBMIT";
 
 //action creators
-export const submitAnswers = (text) => {
+export const submitAnswers = () => {
     return {
         type: "SUBMIT",
-        quizResult: text
+        resultRender: true
     }
 }
 
-//initialize state with this variable in reducer
+//initial state
 const initialState = {
+    quizTitlesAndIds: [
+        {"title":"Which Disney princess are you?", "id":1}, 
+        {"title":"Which one of Ilana's pets are you?", "id":2}
+    ],
     quizTitle: "Which Disney princess are you?",
     quizID: 1,
     quizQuestionsAndAnswers: [],
@@ -23,7 +27,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case 'SUBMIT':
             return Object.assign({}, state, {
-                quizResult: action.quizResult
+                resultRender: action.resultRender
             })
         default:
             return state;

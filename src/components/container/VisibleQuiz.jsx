@@ -1,4 +1,3 @@
-// import React, { Component } from 'react';
 import '../../App.css';
 import Quiz from '../presentational/Quiz'
 import { connect } from 'react-redux';
@@ -6,6 +5,7 @@ import { connect } from 'react-redux';
 /* grab things from state*/
 const mapStateToProps = (state) => {
     return {
+        quizTitlesAndIds: state.quizTitlesAndIds,
         quizTitle: state.quizTitle,
         quizID: state.quizID,
         quizQuestionsAndAnswers: state.quizQuestionsAndAnswers,
@@ -14,10 +14,10 @@ const mapStateToProps = (state) => {
     } 
 }
 
-/* grab creators */
+/* grab action creators */
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitAnswers: (result) => { dispatch({type: "SUBMIT", quizResults: result}) }
+        submitAnswers: () => { dispatch({type: "SUBMIT", resultRender: true}) }
     } 
 }  
 

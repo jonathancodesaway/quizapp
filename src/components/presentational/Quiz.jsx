@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
-import Question from '../presentational/Question';
+import { Question, QuizButtons } from '../index';
 import './Quiz.css';
 
 class Quiz extends Component {
     
-  //Quiz component calculates userResult and upon submit
-  //finds final answer in quizResults array and shows
-  //user their result
+  //Quiz component keeps track of userResult by
+  //passing updateUserResult to Question component.
+  //On submit Question uses Quiz's submitFinalResult
+  //to render quiz result to user
   constructor() {
     super();
 
     this.state = {
-      //quizQuestionsAndAnswers: [ ["question1", [["yes",0], ["no", 1]] ] ]
+      userResult: 0,
+      quizQuestionsAndAnswers: [ 
+        ["question1", [["yes",1], ["no", 2], ["maybe", 3]] ], 
+        ["question2", [["yes",1], ["no", 2], ["maybe", 3]] ], 
+        ["question3", [["yes",1], ["no", 2], ["maybe", 3]] ] 
+      ]
     }
+  }
+
+  updateUserResult = (weight) => {
+    this.setState({userResult: this.state.userResult + weight})
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.submitAnswers()
   }
 
   render() {
     return (
-      <div className="quiz">
-        <h1>{this.props.quizTitle}</h1>
-        {this.props.quizQuestionsAndAnswers.map( function(qAndA) { 
-            return <Question question={qAndA[0]} answers={qAndA[1]}/> 
-        })};
-        {this.props.resultRender ? <div className="result">{this.props.quizResult}</div> : null }
+      <div>
+        <QuizButtons quizTitlesAndIds={this.props.quizTitlesAndIds}/>
+        <div className="quiz">
+          <h1>{this.props.quizTitle}</h1>
+          <form onSubmit={(e) => {this.handleSubmit(e)}}>
+          BEGIN FORM
+          {this.state.quizQuestionsAndAnswers.map( (qAndA) => { 
+              return (
+                <Question 
+                  question={qAndA[0]} 
+                  answers={qAndA[1]} 
+                  updateUserResult={this.updateUserResult}
+                /> 
+              )
+          })}
+          <button>Submit</button>
+          END FORM
+          </form>
+          {this.props.resultRender ? <div className="result">Result:{this.props.quizResult}</div> : null }
+        </div>
       </div>
     );
   }
