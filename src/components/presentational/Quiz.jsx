@@ -28,20 +28,23 @@ class Quiz extends Component {
   render() {
     return (
       <div>
-        <QuizButtons quizTitlesAndIds={this.props.quizTitlesAndIds} quizThunk={this.props.quizThunk}/>
+        <QuizButtons 
+          quizTitlesAndIds={this.props.quizTitlesAndIds} 
+          quizThunk={this.props.quizThunk}
+        />
         <div className="quiz">
           <h1>{this.props.quizTitle}</h1>
           <form onSubmit={(e) => {this.handleSubmit(e)}}>
           BEGIN FORM
           {this.props.quizQuestionsAndAnswers.map( (qAndA) => { 
-              return (
-                <Question 
-                  question={qAndA.question} 
-                  answers={Object.keys(qAndA.answers)} 
-                  weights={Object.values(qAndA.answers)}
-                  updateUserResult={this.updateUserResult}
-                /> 
-              )
+            return (
+              <Question 
+                question={qAndA.question} 
+                answers={JSON.parse(qAndA.answers)} 
+                weights={Object.values(JSON.parse(qAndA.answers))}
+                updateUserResult={this.updateUserResult}
+              /> 
+            )
           })}
           <button>Submit</button>
           END FORM

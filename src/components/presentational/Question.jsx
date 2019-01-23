@@ -13,17 +13,17 @@ class Question extends Component {
     return (
       <div className="question">
         {this.props.question} 
-        {this.props.answers.map( (answer, index) => {
-            return (
-              <div className="answer">
-                {answer}
-                <input 
-                  type="radio" 
-                  name="selection" 
-                  onChange={() => {this.handleChange(index)}}>
-                </input>
-              </div>
-            )
+        {Object.keys(this.props.answers).map( (answer, index) => {
+          return (
+            <div className="answer">
+              {answer}
+              <input 
+                type="radio" 
+                name="selection" 
+                onChange={() => {this.handleChange(index)}}>
+              </input>
+            </div>
+          )
         })}
       </div>
     );

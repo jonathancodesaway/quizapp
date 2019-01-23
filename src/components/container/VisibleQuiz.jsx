@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submitAnswers: () => { dispatch(submitAnswers()) },
-    quizThunk: () => { dispatch(quizThunk()) }
+    quizThunk: (id, title) => { dispatch(quizThunk(id, title)) }
   } 
 }  
 
