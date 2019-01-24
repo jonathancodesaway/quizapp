@@ -17,12 +17,17 @@ class Quiz extends Component {
   }
 
   updateUserResult = (weight) => {
-    this.setState({userResult: this.state.userResult + weight})
+    this.setState({ userResult: this.state.userResult + weight })
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
-    this.props.submitAnswers()
+    //use this.state.userResult to find result in results array
+    //pass result to submitanswers
+    //if this array includes userResult:
+    this.props.quizResults.forEach(res => {
+      res.search == this.state.userResult ? this.props.submitAnswers(res.result) : console.log("nope")
+    });
   }
 
   render() {
@@ -31,11 +36,11 @@ class Quiz extends Component {
         <QuizButtons 
           quizTitlesAndIds={this.props.quizTitlesAndIds} 
           quizThunk={this.props.quizThunk}
+          handleClick={this.handleClick}
         />
         <div className="quiz">
           <h1>{this.props.quizTitle}</h1>
           <form onSubmit={(e) => {this.handleSubmit(e)}}>
-          BEGIN FORM
           {this.props.quizQuestionsAndAnswers.map( (qAndA) => { 
             return (
               <Question 
@@ -46,10 +51,9 @@ class Quiz extends Component {
               /> 
             )
           })}
-          <button>Submit</button>
-          END FORM
           </form>
-          {this.props.resultRender ? <div className="result">Result:{this.props.quizResult}</div> : null }
+          {this.props.submitButton ? <button className="btn">Submit</button> : null}
+          {this.props.resultRender ? <div className="result">Result ==>{this.props.returnUserResult}</div> : null}
         </div>
       </div>
     );

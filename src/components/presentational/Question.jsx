@@ -19,7 +19,7 @@ class Question extends Component {
               {answer}
               <input 
                 type="radio" 
-                name="selection" 
+                name={`${this.props.question}`} 
                 onChange={() => {this.handleChange(index)}}>
               </input>
             </div>
@@ -30,4 +30,4 @@ class Question extends Component {
   }
 }
   
-  export default Question;
+export default Question;

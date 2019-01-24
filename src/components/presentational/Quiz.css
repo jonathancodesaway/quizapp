@@ -1,10 +1,27 @@
 .quiz {
     display: flex;
     flex-direction: column;
-    background-color: yellow;
+    background: linear-gradient(white, rgb(235, 126, 144));
+    align-items: center;
+    height: 50vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .result {
-    background-color: blueviolet;
+    background-color: rgb(235, 33, 167);
     margin: 90px;
     padding: 90px;
+}
+.btn {
+    background: transparent;
+    border-radius: 13px;
+    border: 3px solid;
+    margin: 6px;
+    font-weight: bold;
+    padding: 10px;
+}
+.btn:hover {
+    background-color: rgb(154, 55, 247);
+    color: black;
+    margin: 6px;
 }

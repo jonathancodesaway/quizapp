@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './QuizButtons.css'
-import { renderQuiz } from '../../store/reducer';
 
 class QuizButtons extends Component {
 
@@ -16,7 +15,7 @@ class QuizButtons extends Component {
         <div className="quiz-buttons" onClick={(event) => {this.handleSubmit(event)}}>
           {this.props.quizTitlesAndIds.map( (quiz) => {
             return (
-              <button value={JSON.parse(quiz.info).title} id={JSON.parse(quiz.info).id}>
+              <button onClick={this.props.handleClick} className="btn" value={JSON.parse(quiz.info).title} id={JSON.parse(quiz.info).id}>
                 {JSON.parse(quiz.info).title}
               </button>
             )
@@ -26,7 +25,7 @@ class QuizButtons extends Component {
     }
     else {
       return (
-        <div></div>
+        <div className="quiz-buttons"></div>
       )
     }
   }

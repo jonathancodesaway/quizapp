@@ -1,6 +1,20 @@
 .quiz-buttons {
     display: flex;
     flex-direction: row;
-    background-color: blueviolet;
+    background: rgb(235, 126, 144);
     justify-content: space-evenly;
+    border-bottom: solid;
+    height: 10vh;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.btn {
+    background: transparent;
+    border-radius: 13px;
+    border: 3px solid;
+    font-weight: bold;
+}
+.btn:hover {
+    background-color: rgb(235, 149, 163);
+    color: black;
 }

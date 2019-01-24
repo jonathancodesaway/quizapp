@@ -3,34 +3,51 @@ import './App.css';
 import { VisibleQuiz, Footer } from './components';
 import { connect } from 'react-redux';
 import { initialRender } from './store/reducer'
+import axios from 'axios';
+const api_key = "gyXFuKBr6kwEzWHJN1VHVq4oY2hI17E4"
 
 class App extends Component {
   
+  constructor() {
+    super();
+
+    this.state = {
+      gifs: [],
+      canDisplay: false
+    }
+  }
   componentDidMount() {
     this.props.initialRender()
-    // let url = `http://localhost:3001/quizlist`
-    // axios.get(url)
-    // .then(response => {
-    //   //this.props.quizTitlesAndIds: response.data
-    //   response.data.map( (obj) => {
-    //     console.log(JSON.parse(obj.info).title)
-    //     this.props.quizTitlesAndIds.push(JSON.parse(obj.info))
-    //   })
-    //   // access titles from quizTitlesAndIds like so:
-    //   // console.log(this.props.quizTitlesAndIds[0].title)
-    //   // and IDS:
-    //   // console.log(this.props.quizTitlesAndIds[0].id)
-    // })
+    let url = `http://api.giphy.com/v1/gifs/trending?api_key=${api_key}`;
+    axios.get(url)
+    .then(response => {
+      this.setState({
+        gifs: response.data,
+        canDisplay: true
+      })
+    })
   }
 
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">Quiz App</header>
-        <VisibleQuiz />
-        <Footer />
-      </div>
-    );
+    if (this.state.canDisplay) {
+      return (
+        <div className="App">
+          <header className="App-header"><button className="buton" onClick={this.props.initialRender}>Quiz App</button></header>
+          <VisibleQuiz />
+          <div className="Show-gifs">
+            {this.state.gifs.data.map( (curGif, index) => {
+              if (index<5) {  
+                return <img src={curGif.images.fixed_height_downsampled.url}></img>
+              }
+            })}
+          </div>
+          <Footer />
+        </div>
+      );
+    }
+    else {
+      return(<div>Loading...</div>)
+    }
   }
 }
 
