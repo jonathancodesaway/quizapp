@@ -6,11 +6,19 @@
     height: 50vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 .result {
-    background-color: rgb(235, 33, 167);
     margin: 90px;
     padding: 90px;
+    background-color: rgb(235, 126, 144);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 1px;
+    border-radius: 13px;
 }
 .btn {
     background: transparent;

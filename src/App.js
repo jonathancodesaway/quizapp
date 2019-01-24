@@ -32,13 +32,21 @@ class App extends Component {
     if (this.state.canDisplay) {
       return (
         <div className="App">
-          <header className="App-header"><button className="buton" onClick={this.props.initialRender}>Quiz App</button></header>
+          <header className="App-header">
+            <button className="buton" onClick={this.props.initialRender}>Quiz App</button>
+            <div className="dropdown">
+              <button className="drop-button">=Menu=</button>
+              <div className="dropdown-content">
+                <p>Login</p>
+                <p>Contact</p>
+                <p>Logout</p>
+              </div>
+            </div>  
+          </header>
           <VisibleQuiz />
           <div className="Show-gifs">
             {this.state.gifs.data.map( (curGif, index) => {
-              if (index<5) {  
-                return <img src={curGif.images.fixed_height_downsampled.url}></img>
-              }
+              return <img src={curGif.images.fixed_height_downsampled.url}></img>
             })}
           </div>
           <Footer />

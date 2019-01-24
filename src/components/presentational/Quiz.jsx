@@ -18,6 +18,7 @@ class Quiz extends Component {
 
   updateUserResult = (weight) => {
     this.setState({ userResult: this.state.userResult + weight })
+    console.log(this.state.userResult)
   }
 
   handleSubmit = (event) => {
@@ -26,8 +27,13 @@ class Quiz extends Component {
     //pass result to submitanswers
     //if this array includes userResult:
     this.props.quizResults.forEach(res => {
-      res.search == this.state.userResult ? this.props.submitAnswers(res.result) : console.log("nope")
+      //result keys arrays:
+      //console.log("res: ", Object.keys(JSON.parse(res.results)))
+      Object.values(JSON.parse(res.results)).forEach( (range, index) => {
+        range.includes(this.state.userResult) ? this.props.submitAnswers(Object.keys(JSON.parse(res.results))[index]) : console.log("User result isn't right...")
+      })
     });
+    this.setState({ userResult: 0 })
   }
 
   render() {
@@ -51,9 +57,9 @@ class Quiz extends Component {
               /> 
             )
           })}
-          </form>
           {this.props.submitButton ? <button className="btn">Submit</button> : null}
-          {this.props.resultRender ? <div className="result">Result ==>{this.props.returnUserResult}</div> : null}
+          </form>
+          {this.props.resultRender ? <div className="result">You Got: {this.props.returnUserResult}</div> : null}
         </div>
       </div>
     );

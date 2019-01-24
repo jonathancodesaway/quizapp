@@ -7,7 +7,6 @@ export const INITIALIZE = "INITIALIZE";
 
 //action creators
 export const initialize = (titles) => {
-  console.log("initiailizing")
   return {
     type: "INITIALIZE",
     quizTitlesAndIds: titles
@@ -35,8 +34,8 @@ export const renderQuiz = (questions, results, title) => {
 export const quizThunk = (quizId, title) => (dispatch) => {
   return (
     axios.all([
-      axios.get(`http://18.216.192.154/api/quizques?id=${quizId}`),
-      axios.get(`http://18.216.192.154/api/quizres?id=${quizId}`)
+      axios.get(`http://18.191.160.220/api/quizques?id=${quizId}`),
+      axios.get(`http://18.191.160.220/api/quizres?id=${quizId}`)
     ]) 
     .then(axios.spread( (questionResp, resultResp) => {
       dispatch(renderQuiz(questionResp.data, resultResp.data, title))
@@ -48,7 +47,7 @@ export const quizThunk = (quizId, title) => (dispatch) => {
 
 export const initialRender = () => (dispatch) => {
   return (
-    axios.get(`http://18.216.192.154/api/quizlist`)
+    axios.get(`http://18.191.160.220/api/quizlist`)
     .then(response => {
       console.log("response: ", response)
       dispatch(initialize(response.data))
