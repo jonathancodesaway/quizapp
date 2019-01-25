@@ -1,0 +1,22 @@
+.question {
+    background-color: rgb(235, 126, 144);
+    margin: 90px;
+    padding: 90px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 1px;
+    border-radius: 13px;
+}
+.answer {
+    color: black;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+}
+input:hover {
+    cursor: crosshair;
+}
